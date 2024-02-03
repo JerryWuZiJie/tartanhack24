@@ -132,3 +132,69 @@ body {
   outline: none;
   border-color: #0056b3; /* Highlight border on focus */
 }
+
+
+
+/* Add the following styles for the info page */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f8f8f8 30%, #e8ecef 100%);
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    background-color: #0056b3;
+    color: white;
+    padding: 15px;
+    border-radius: 20px;
+    margin: 0;
+}
+
+h6 a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+h6 a:hover {
+    text-decoration: underline;
+}
+
+.table.data-list {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.table.data-list th {
+    background-color: #0056b3;
+    color: white;
+    padding: 15px;
+    border-radius: 20px 20px 0 0;
+    margin: 0;
+}
+
+.table.data-list td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+    border-radius: 20px;
+}
+
+.table.data-list td:last-child {
+    border-bottom: none;
+}
+
+.table.data-list tr:hover {
+    background-color: #f0f8ff;
+}

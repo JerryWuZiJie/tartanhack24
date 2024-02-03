@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/index.css">
+    <title>Information for {{county}}</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Greeting based on url -->
+        <h2>Information for {{county}}!</h2>
+        <!-- Option to choose a different course -->
+        <h6><a href="/">Go Back Home</a></h6>
+
+        <!-- Display the relevant information for this course in a table -->
+        <table class="table table-striped data-list">
+            <thead>
+                <tr>
+                    <th class="text-start">Detail1 for {{county}}:</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in detail1 %}
+                <tr>
+                    <td class="text-start">{{row}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

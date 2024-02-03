@@ -34,28 +34,6 @@
         <input type="submit" value="Submit">
       </div>
     </form>
-
-
-
-
-
-
-
-    <!-- <form id="parametersForm">
-      <div class="parameter-row labels">
-        {% for param_name in param_names %}
-          <label for="{{ param_name }}">{{ param_name }}</label>
-        {% endfor %}
-      </div>
-      <div class="parameter-row inputs">
-        {% for parameter in parameters %}
-          <input type="number" id="{{ param_names[loop.index-1] }}" name="{{ param_names[loop.index-1] }}" min="0" max="3" value="{{ parameter }}" required>
-        {% endfor %}
-      </div>
-      <div class="submit-row">
-        <input type="submit" value="Submit">
-      </div>
-    </form> -->
   </div>
 
   <div class="data-list">
@@ -63,7 +41,7 @@
     <ul id="rankingList">
       <!-- Ranking list items will go here -->
       {% for item in ranked_list %}
-      <li><a>{{ item }}</a></li>
+      <li><a href="../details/{{item}}" target="_blank">{{ item }}</a></li>
       {% endfor %}
     </ul>
   </div>

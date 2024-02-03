@@ -29,6 +29,16 @@ def index():
         ranked_list = ['Please adjust the parameters and submit!'] 
         return render_template('index.html', parameters = parameters, ranked_list = ranked_list, param_names = param_names, rank = rank)
 
+@app.route('/details/<county>')
+def details(county):
+    # Get all the information of this course from each table
+    detail1 = ['detail1']
+    detail2 = ['detail2']
+    detail3 = ['detail3']
+    return render_template('details.html', county=county, detail1=detail1, detail2=detail2, detail3=detail3)
+
+
+
 # # Concepts Page, display all concepts with course number in the database
 # @app.route('/concepts/', methods=['GET', 'POST'])
 # def concepts():
