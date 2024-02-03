@@ -16,26 +16,27 @@
 
   <div class="parameters">
     <form id="parametersForm">
-  <div class="parameter-row labels">
-    {% for param_name in param_names %}
-      <label for="{{ param_name }}">{{ param_name }}</label>
-    {% endfor %}
-  </div>
-  <div class="parameter-row inputs">
-    {% set counter = 0 %}
-    {% for parameter in parameters %}
-      <select id="{{ param_names[counter] }}" name="{{ param_names[counter] }}" required>
-        {% for option_value in range(4) %}
-          <option value="{{ option_value }}" {% if parameter|default(0)|int == option_value %}selected{% endif %}>{{ option_value }}</option>
+      <div class="parameter-row labels">
+        {% for param_name in param_names %}
+          <label for="{{ param_name }}">{{ param_name }}</label>
         {% endfor %}
-      </select>
-      {% set counter = counter + 1 %}
-    {% endfor %}
-  </div>
-  <div class="submit-row">
-    <input type="submit" value="Submit">
-  </div>
-</form>
+      </div>
+      <div class="parameter-row inputs">
+        {% set counter = 0 %}
+        {% for parameter in parameters %}
+          <select id="{{ param_names[counter] }}" name="{{ param_names[counter] }}" required>
+            {% for option_value in rank %}
+              <option value="{{ option_value }}" {% if parameter|default(0)|int == option_value %}selected{% endif %}>{{ option_value }}</option>
+            {% endfor %}
+          </select>
+          {% set counter = counter + 1 %}
+        {% endfor %}
+      </div>
+      <div class="submit-row">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+
 
 
     <!-- <form id="parametersForm">
