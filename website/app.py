@@ -18,6 +18,7 @@ if __name__ == '__main__':
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == "POST":
+        encoded_result = request.form.get("parametersForm")
         parameters = ['0', '0', '0', '0', '0']
         ranked_list = ['one', 'two', 'three', 'four', 'five'] 
         return render_template('index.html', parameters = parameters, ranked_list = ranked_list)
