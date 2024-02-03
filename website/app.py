@@ -11,15 +11,19 @@ def scoring(rank, df):
         score = TSNEout[:, 0] - TSNEout[:, 1]
 
         return score
-
-    df = (df - df.min(0)) / (df.max(0) - df.min(0))
-
+    
+    df.fillna(0, inplace=True)
+    
+    df = (df - df.min(0))/(df.max(0) - df.min(0))
+    
     #  spearsman corr
-    corr = spearmanr(rank, df)[0][0][1:]
+    corr = spearmanr(rank, df, nan_policy='omit')[0][0][1:]
     df *= corr
 
     score = tsne_score(df)
-
+    score = score / score.sum()
+    
+    
     return corr, score
 
 
