@@ -78,6 +78,7 @@ drop_lst = [
     "Total Working Pop. (Age 16+) (2010)",
     "SNAP_All_csv_Residential",
 ]
+unused = df[["Neighborhood"] + drop_lst]
 trash_lst = df[drop_lst]
 df.drop(columns=drop_lst, inplace=True)
 df.drop(columns=["Latitude", "Longitude"], inplace=True)
@@ -106,7 +107,7 @@ def index():
             + mapped_param[parameters[1]] * df.iloc[:, 2]
             + mapped_param[parameters[2]] * (df.iloc[:, 15] + df.iloc[:, 16]) / 2
             + mapped_param[parameters[3]]
-            * (-df.iloc[:, 5] + -df.iloc[:, 6] + df.iloc[:, 7] - df.iloc[:, 8])
+            * (-df.iloc[:, 5] + -df.iloc[:, 6] + df.iloc[:, 7] + df.iloc[:, 8])
             / 4
             + mapped_param[parameters[4]]
             * (
@@ -181,11 +182,19 @@ def details(county):
         [temp_df.columns[10], temp_df.iloc[0, 10]],
         [temp_df.columns[11], temp_df.iloc[0, 11]],
     ]
+
+    temp_df = unused.loc[unused["Neighborhood"] == county]
+    unused_lst = ["Other parameters"]
+    for i, col in enumerate(temp_df.columns[1:]):
+        unused_lst.append([col, temp_df.iloc[0, i]])
+
     detail_lst.append(park_lst)
     detail_lst.append(bike_lst)
     detail_lst.append(commute_lst)
     detail_lst.append(afford_lst)
     detail_lst.append(safe_lst)
+    detail_lst.append(unused_lst)
+
     return render_template("details.html", county=county, table_list=detail_lst)
 
 
