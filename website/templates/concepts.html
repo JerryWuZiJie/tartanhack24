@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    List for Courses Concepts Table
+{% endblock %}
+
+{% block main %}
+    <!-- Display a list of all concepts in table format -->
+    <h2> List for Courses Concepts Table </h2>
+
+    <form method="post" action="/concepts/">
+    <h6>
+    Filter Results:
+    <select id="filter" name="filter">
+      {% set encountered_concepts = [] %}
+      {% for row in cctable %}
+          <!-- Make sure no duplicate items in filter -->
+          {% if row.concept not in encountered_concepts %}
+              <!-- Encode the names so that spaces in names do not cause a problem -->
+              {% set _ = encountered_concepts.append(row.concept) %}
+              <option value="{{ row.concept|urlencode }}">{{ row.concept }}</option>
+          {% endif %}
+      {% endfor %}
+    </select>
+    <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+    </form>
+    </h6>
+    <h6><a href="/concepts">Reset Filter</a></h6>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-start">Course Number</th>
+                <th class="text-start">Concept Names</th>
+                <th class="text-start">Semester Offered</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in cctable %}
+            <tr>
+                <!-- Clickable links to jump to course details. the /welcome/ in the link is a placeholder text for display greetings in the course info page, it can be anything. -->
+                <td class="text-start"><a href="../courseinfo/welcome/{{row.course_id}}" target="_blank">{{row.course_id}}</a></td>
+                <td class="text-start">{{row.concept}}</td>
+                <td class="text-start">{{row.semester_id}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

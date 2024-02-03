@@ -15,9 +15,16 @@ if __name__ == '__main__':
 #     return conn
 
 # Landing Page, show a list of features
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    if request.method == "POST":
+        parameters = ['0', '0', '0', '0', '0']
+        ranked_list = ['one', 'two', 'three', 'four', 'five'] 
+        return render_template('index.html', parameters = parameters, ranked_list = ranked_list)
+    else:
+        parameters = ['0', '0', '0', '0', '0']
+        ranked_list = ['one', 'two', 'three', 'four', 'five'] 
+        return render_template('index.html', parameters = parameters, ranked_list = ranked_list)
 
 # # Concepts Page, display all concepts with course number in the database
 # @app.route('/concepts/', methods=['GET', 'POST'])
