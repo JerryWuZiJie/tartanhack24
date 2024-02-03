@@ -13,51 +13,22 @@
         <!-- Option to choose a different course -->
         <h5><a href="/">Go Back Home</a></h5>
 
-        <!-- Display the relevant information for this course in a table -->
-        <table class="table table-striped data-list">
-            <thead>
-                <tr>
-                    <th class="text-start">Detail1 for {{county}}:</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for row in detail1 %}
-                <tr>
-                    <td class="text-start">{{row}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
-        <table class="table table-striped data-list">
-            <thead>
-                <tr>
-                    <th class="text-start">Detail2 for {{county}}:</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for row in detail2 %}
-                <tr>
-                    <td class="text-start">{{row}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
-        <table class="table table-striped data-list">
-            <thead>
-                <tr>
-                    <th class="text-start">Detail3 for {{county}}:</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for row in detail3 %}
-                <tr>
-                    <td class="text-start">{{row}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        {% for detail_data in [detail1, detail2, detail3] %}
+            <table class="table table-striped data-list">
+                <thead>
+                    <tr>
+                        <th class="text-start">{{ detail_data[0] }} for {{county}}:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in detail_data %}
+                        <tr>
+                            <td class="text-start">{{ row }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
     </div>
 </body>
 </html>
