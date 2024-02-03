@@ -6,7 +6,27 @@ import os
 import pandas as pd
 from pprint import pprint
 import numpy as np
+from sklearn.manifold import TSNE
+from scipy.stats import spearmanr
 
+def scoring(rank, df):
+    
+    def tsne_score(df):
+        TSNEout = TSNE(n_components=2, method='exact').fit_transform(df)
+        score = TSNEout[:, 0] - TSNEout[:, 1]
+
+        return score
+    
+    df = (df - df.min(0))/(df.max(0) - df.min(0))
+    
+    #  spearsman corr
+    corr = spearmanr(rank, df)[0][0][1:]
+    df *= corr
+    
+    score = tsne_score(df)
+    
+    
+    return corr, score
 
 app = Flask(__name__)
 
@@ -76,15 +96,15 @@ def index():
         # Safety
         # (-df.iloc[:, 1] -df.iloc[:, 3] -df.iloc[:, 4] - df.iloc[:, 9] - df.iloc[:, 10] - df.iloc[:, 11])/6
 
-        df["sum"] = mapped_param[parameters[0]]*(df.iloc[:, 12] + df.iloc[:, 13] - df.iloc[:, 14])/3 +\
+        df["sum"] = mapped_param[parameters[0]]*(df.iloc[:, 12] + df.iloc[:, 13])/2 +\
             mapped_param[parameters[1]]*df.iloc[:, 2] +\
                 mapped_param[parameters[2]]*(df.iloc[:, 15] + df.iloc[:, 16])/2 +\
                     mapped_param[parameters[3]]*(-df.iloc[:, 5] + -df.iloc[:, 6] + df.iloc[:, 7] - df.iloc[:, 8])/4 +\
                         mapped_param[parameters[4]]*(-df.iloc[:, 1] -df.iloc[:, 3] -df.iloc[:, 4] - df.iloc[:, 9] - df.iloc[:, 10] - df.iloc[:, 11])/6
 
-        # print(df.iloc[:,[0,-1]].values)
+        print(df.iloc[:,[0,-1]].values)
         df.sort_values('sum', ascending=False, inplace = True)
-        print(df.iloc[:,0].values)
+        # print(df.iloc[:,0].values)
         ranked_list = df.iloc[:,0].values
         
         # ranked_list = ['one', 'two', 'three', 'four', 'five'] 
