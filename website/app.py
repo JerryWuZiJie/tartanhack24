@@ -20,12 +20,16 @@ def index():
     if request.method == "POST":
         encoded_result = request.form.get("parametersForm")
         parameters = ['0', '0', '0', '0', '0']
+        param_names = ['param1', 'param2', 'param3', 'param4', 'param5']
         ranked_list = ['one', 'two', 'three', 'four', 'five'] 
-        return render_template('index.html', parameters = parameters, ranked_list = ranked_list)
+        return render_template('index.html', parameters = parameters, ranked_list = ranked_list, param_names = param_names)
     else:
         parameters = ['0', '0', '0', '0', '0']
         ranked_list = ['one', 'two', 'three', 'four', 'five'] 
-        return render_template('index.html', parameters = parameters, ranked_list = ranked_list)
+        param_names = ['Parking Friendliness', 'Biking Friendliness', 'Ease of Commute', 'Affordability', 'Safety']
+        rank = ["Irrelevant", "Low", "Medium", "High"]
+        ranked_list = ['one', 'two', 'three', 'four', 'five'] 
+        return render_template('index.html', parameters = parameters, ranked_list = ranked_list, param_names = param_names, rank = rank)
 
 # # Concepts Page, display all concepts with course number in the database
 # @app.route('/concepts/', methods=['GET', 'POST'])
