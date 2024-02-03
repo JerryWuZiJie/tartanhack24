@@ -19,11 +19,12 @@
         <!-- <h2>{{ loop.index }}. Table</h2> -->
         <table class="table table-striped data-list">
             <tr>
-                <th class="text-start">{{table[0]}} for {{county}}:</th>
+                <th class="text-start" colspan="2">{{table[0]}}</th>
             </tr>
             {% for val in table[1:] %}
             <tr>
-                <td class="text-start">{{val}}</td>
+                <td class="text-start">{{val[0]}}</td>
+                <td class="text-start">{{val[1]}}</td>
             </tr>
             {% endfor %}
         </table>
