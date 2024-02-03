@@ -32,7 +32,7 @@ def index():
 @app.route('/details/<county>')
 def details(county):
     # Get all the information of this course from each table
-    detail1 = ['detail1']
+    detail1 = ['detail1', 'detail4']
     detail2 = ['detail2']
     detail3 = ['detail3']
     return render_template('details.html', county=county, detail1=detail1, detail2=detail2, detail3=detail3)
