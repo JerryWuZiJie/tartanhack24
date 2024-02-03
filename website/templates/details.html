@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/index.css">
     <title>Information for {{county}}</title>
 </head>
+
 <body>
     <div class="container">
         <!-- Greeting based on url -->
@@ -13,33 +15,20 @@
         <!-- Option to choose a different course -->
         <h5><a href="javascript:history.back()">Go Back Home</a></h5>
 
-        {% for detail_data in [detail1, detail2, detail3] %}
-            <table class="table table-striped data-list">
-                <thead>
-                    <tr>
-                        <th class="text-start">{{ detail_data[0] }} for {{county}}:</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for row in detail_data %}
-                        <tr>
-                            <td class="text-start">{{ row }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
         {% for table in table_list %}
-            <!-- <h2>{{ loop.index }}. Table</h2> -->
-            <table class="table table-striped data-list">
-                <tr>
-                    <th class="text-start">{{table[0]}} for {{county}}:</th>
-                </tr>
-                <tr>
-                    {% for val in table[1:] %}
-                        <td class="text-start">{{val}}</td>
-                    {% endfor %}
-                </tr>
-            </table>
+        <!-- <h2>{{ loop.index }}. Table</h2> -->
+        <table class="table table-striped data-list">
+            <tr>
+                <th class="text-start">{{table[0]}} for {{county}}:</th>
+            </tr>
+            {% for val in table[1:] %}
+            <tr>
+                <td class="text-start">{{val}}</td>
+            </tr>
+            {% endfor %}
+        </table>
         {% endfor %}
     </div>
 </body>
+
 </html>

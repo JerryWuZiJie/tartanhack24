@@ -54,7 +54,7 @@ def index():
             '3':1
             }
         
-        df = pd.read_csv("/Users/JimXue/Desktop/tartanhack24/Datasets/post_processed.csv")
+        df = pd.read_csv("../Datasets/post_processed.csv")
         # Normalize the data sum to 1
         for col in df.iloc[:, 3:]:
             if pd.api.types.is_numeric_dtype(df[col]):
