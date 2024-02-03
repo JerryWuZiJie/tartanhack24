@@ -2,6 +2,7 @@ import pandas as pd
 from flask import Flask, render_template, request
 from sklearn.manifold import TSNE
 from scipy.stats import spearmanr
+import numpy as np
 
 
 def scoring(rank, df):
@@ -125,9 +126,8 @@ def index():
         ranked_list_temp = df.iloc[:, 0].values
         print("ranked_list_temp", ranked_list_temp)
 
-        corr, undefault_score = scoring(ranked_list_temp, trash_lst)
-
-        df["final_score"] = df["sum"] + 0.2 * undefault_score
+        corr, undefault_score = scoring(np.array(range(len(trash_lst))), trash_lst)
+        df["final_score"] = df["sum"] + 0.1 * undefault_score
         df.sort_values("final_score", ascending=False, inplace=True)
         ranked_list = df.iloc[:, 0].values
 
