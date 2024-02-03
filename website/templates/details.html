@@ -11,7 +11,7 @@
         <!-- Greeting based on url -->
         <h2>Information for {{county}}!</h2>
         <!-- Option to choose a different course -->
-        <h5><a href="/">Go Back Home</a></h5>
+        <h5><a href="javascript:history.back()">Go Back Home</a></h5>
 
         {% for detail_data in [detail1, detail2, detail3] %}
             <table class="table table-striped data-list">
@@ -27,6 +27,17 @@
                         </tr>
                     {% endfor %}
                 </tbody>
+        {% for table in table_list %}
+            <!-- <h2>{{ loop.index }}. Table</h2> -->
+            <table class="table table-striped data-list">
+                <tr>
+                    <th class="text-start">{{table[0]}} for {{county}}:</th>
+                </tr>
+                <tr>
+                    {% for val in table[1:] %}
+                        <td class="text-start">{{val}}</td>
+                    {% endfor %}
+                </tr>
             </table>
         {% endfor %}
     </div>

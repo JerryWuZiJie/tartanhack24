@@ -30,9 +30,13 @@ def scoring(rank, df):
 app = Flask(__name__)
 
 
+parameters = ["0", "0", "0", "0", "0"]
+
+
 # Landing Page, show a list of features
 @app.route("/", methods=["GET", "POST"])
 def index():
+    global parameters
     param_names = [
         "Parking Friendliness",
         "Biking Friendliness",
@@ -41,7 +45,6 @@ def index():
         "Safety",
     ]
     rank = ["Irrelevant", "Low", "Medium", "High"]
-    global parameters
     if request.method == "POST":
         parameters = [request.form.get(param_name) for param_name in param_names]
         mapped_param = {
@@ -108,7 +111,6 @@ def index():
         
         return render_template('index.html', parameters = parameters, ranked_list = ranked_list, param_names = param_names, rank = rank)
     else:
-        parameters = ["0", "0", "0", "0", "0"]
         ranked_list = ["Please adjust the parameters and submit!"]
         return render_template(
             "index.html",
@@ -122,11 +124,13 @@ def index():
 @app.route("/details/<county>")
 def details(county):
     # Get all the information of this course from each table
-    detail1 = ["detail1"]
-    detail2 = ["detail2"]
-    detail3 = ["detail3"]
+    # TODO: detail_lst
+    detail_lst = []
+    detail_lst.append(["crime rate", "0.5"])
+    detail_lst.append(["crimasdfe rate", "0.dasf5"])
+    detail_lst.append(["crime raefdte", "0.51"])
     return render_template(
-        "details.html", county=county, detail1=detail1, detail2=detail2, detail3=detail3
+        "details.html", county=county, table_list=detail_lst
     )
 
 
