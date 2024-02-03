@@ -17,13 +17,16 @@ def scoring(rank, df):
 
         return score
     
+    df.fillna(0, inplace=True)
+    
     df = (df - df.min(0))/(df.max(0) - df.min(0))
     
     #  spearsman corr
-    corr = spearmanr(rank, df)[0][0][1:]
+    corr = spearmanr(rank, df, nan_policy='omit')[0][0][1:]
     df *= corr
     
     score = tsne_score(df)
+    score = score / score.sum()
     
     
     return corr, score
@@ -102,11 +105,20 @@ def index():
                     mapped_param[parameters[3]]*(-df.iloc[:, 5] + -df.iloc[:, 6] + df.iloc[:, 7] - df.iloc[:, 8])/4 +\
                         mapped_param[parameters[4]]*(-df.iloc[:, 1] -df.iloc[:, 3] -df.iloc[:, 4] - df.iloc[:, 9] - df.iloc[:, 10] - df.iloc[:, 11])/6
 
-        print(df.iloc[:,[0,-1]].values)
+        # print(df.iloc[:,[0,-1]].values)
         df.sort_values('sum', ascending=False, inplace = True)
         # print(df.iloc[:,0].values)
+        ranked_list_temp = df.iloc[:,0].values
+        
+        trash_lst.corr()
+    
+        corr, undefault_score = scoring(ranked_list_temp, trash_lst)
+        
+        df['final_score'] = df['sum'] + undefault_score
+        df.sort_values('final_score', ascending=False, inplace=True)
         ranked_list = df.iloc[:,0].values
         
+        # print(df.iloc[:,[0,-1]].values)
         # ranked_list = ['one', 'two', 'three', 'four', 'five'] 
         
         return render_template('index.html', parameters = parameters, ranked_list = ranked_list, param_names = param_names, rank = rank)
