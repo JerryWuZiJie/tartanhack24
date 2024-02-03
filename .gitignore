@@ -1,2 +1,8 @@
 # ignore config file
 config.ini
+
+# ignore vscode file
+.vscode
+
+# ignore DS_Store file
+.DS_Store
