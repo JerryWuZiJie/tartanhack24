@@ -17,18 +17,16 @@ if __name__ == '__main__':
 # Landing Page, show a list of features
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    param_names = ['Parking Friendliness', 'Biking Friendliness', 'Ease of Commute', 'Affordability', 'Safety']
+    rank = ["Irrelevant", "Low", "Medium", "High"]
+    global parameters
     if request.method == "POST":
-        encoded_result = request.form.get("parametersForm")
-        parameters = ['0', '0', '0', '0', '0']
-        param_names = ['param1', 'param2', 'param3', 'param4', 'param5']
         ranked_list = ['one', 'two', 'three', 'four', 'five'] 
-        return render_template('index.html', parameters = parameters, ranked_list = ranked_list, param_names = param_names)
+        parameters = [request.form.get(param_name) for param_name in param_names]
+        return render_template('index.html', parameters = parameters, ranked_list = ranked_list, param_names = param_names, rank = rank)
     else:
         parameters = ['0', '0', '0', '0', '0']
-        ranked_list = ['one', 'two', 'three', 'four', 'five'] 
-        param_names = ['Parking Friendliness', 'Biking Friendliness', 'Ease of Commute', 'Affordability', 'Safety']
-        rank = ["Irrelevant", "Low", "Medium", "High"]
-        ranked_list = ['one', 'two', 'three', 'four', 'five'] 
+        ranked_list = ['Please adjust the parameters and submit!'] 
         return render_template('index.html', parameters = parameters, ranked_list = ranked_list, param_names = param_names, rank = rank)
 
 # # Concepts Page, display all concepts with course number in the database
