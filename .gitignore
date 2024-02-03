@@ -6,3 +6,6 @@ config.ini
 
 # ignore DS_Store file
 .DS_Store
+
+# ignore __pycache__ file
+__pycache__
