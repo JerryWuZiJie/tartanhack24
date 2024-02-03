@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <!-- This is the landing page! Use this to adjust what is displayed on the front page. -->
+		<h1> Welcome to Curriculum Visualization</h1>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-start">Pages</th>
+                <th class="text-start">Functions</th>
+            </tr>
+        </thead>
+				<tbody>
+
+						<tr>
+                <td class="text-start"><a href="courses">All Courses</a></td>
+                <td class="text-start">This will display a list of all the courses</td>
+            </tr>
+
+						<tr>
+                <td class="text-start"><a href="instructors">All Instructors</a></td>
+                <td class="text-start">This will display list of all the instructors</td>
+            </tr>
+
+						<tr>
+                <td class="text-start"><a href="skills">All Skills</a></td>
+                <td class="text-start">This will display a list of all the course skills</td>
+            </tr>
+
+						<tr>
+								<td class="text-start"><a href="concepts">All Concepts</a></td>
+								<td class="text-start">This will display a list of all the course concepts</td>
+						</tr>
+
+            <tr>
+								<td class="text-start"><a href="makers">All Maker Activities</a></td>
+								<td class="text-start">This will display a list of all the maker activities</td>
+						</tr>
+
+            <tr>
+								<td class="text-start"><a href="ethics">All Ethic Activities</a></td>
+								<td class="text-start">This will display a list of all the ethic activities</td>
+						</tr>
+
+            <tr>
+								<td class="text-start"><a href="entreps">All Entrepreneurial Activities</a></td>
+								<td class="text-start">This will display a list of all the entrepreneurial activities</td>
+						</tr>
+
+						<tr>
+								<td class="text-start"><a href="prereqs">Prereqs View</a></td>
+								<td class="text-start">You can input a course number to display a prereq view for that course</td>
+						</tr>
+
+            <tr>
+                <td class="text-start"><a href="instructorview">Instructor View</a></td>
+                <td class="text-start">This will allow the instructors to select their own view with an AndrewID</td>
+            </tr>
+
+            <tr>
+                <td class="text-start"><a href="clusters">Cluster View</a></td>
+                <td class="text-start">Course clusters similar to prereq, but no lines are drawn</td>
+            </tr>
+
+            <tr>
+                <td class="text-start"><a href="buckets">Bucket View</a></td>
+                <td class="text-start">Bucket view that can display up to 5 colomns of course tables with a header</td>
+            </tr>
+
+            <tr>
+                <td class="text-start"><a href="courseselect">Course Info</a></td>
+                <td class="text-start">You can enter a course number to retrive the detailed course information for this course</td>
+            </tr>
+
+        </tbody>
+    </table>
+{% endblock %}
