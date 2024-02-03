@@ -114,7 +114,7 @@ def index():
     
         corr, undefault_score = scoring(ranked_list_temp, trash_lst)
         
-        df['final_score'] = df['sum'] + undefault_score
+        df['final_score'] = df['sum'] + 0.2*undefault_score
         df.sort_values('final_score', ascending=False, inplace=True)
         ranked_list = df.iloc[:,0].values
         
