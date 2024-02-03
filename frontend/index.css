@@ -1,0 +1,112 @@
+/* Save this as styles.css */
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: linear-gradient(135deg, #f8f8f8 30%, #e8ecef 100%);
+    color: #333;
+    margin: 0; 
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .logo img {
+    max-width: 300px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+  
+  .parameters .parameter-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .parameters .labels {
+    margin-bottom: 5px;
+  }
+  
+  .parameters .labels label {
+    width: calc(16% - 10px); /* Adjusted to match the input fields' width */
+    display: block;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  .parameters .inputs input[type=number] {
+    width: calc(16% - 10px); /* Adjusted for 5 inputs to fit in one row with some margin */
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+  }
+  
+  .parameters .submit-row {
+    margin-top: 20px; /* Add space between the inputs and the submit button */
+    text-align: center; /* Center-align the submit button */
+  }
+  
+  .parameters .submit-row input[type=submit] {
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #0056b3;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .parameters .submit-row input[type=submit]:hover {
+    background-color: #003d82;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  }
+  
+  .parameters .submit-row input[type=submit]:active {
+    background-color: #002a5c;
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }     
+  
+  .data-list {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    margin-top: 30px;
+  }
+  
+  .data-list h3 {
+    background-color: #0056b3;
+    color: white;
+    padding: 15px;
+    border-radius: 20px 20px 0 0;
+    margin: 0;
+  }
+  
+  .data-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .data-list li {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+    border-radius: 20px;
+  }
+  
+  .data-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .data-list li:hover {
+    background-color: #f0f8ff;
+  }
+  
